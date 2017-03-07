@@ -8,7 +8,7 @@
   
   In the root directory you will find all the expected components of a presentation layer, including a View.html file, a CSS file, and some miscellaneous packaging files.
 
-  The SQL install provider can be found in the Providers/DataProviders/SqlDataProviders folder and is called 00.00.01.SqlDataProvider. This creates a basic table and filestructure for the database, which has since been manually updated and altered to reflect the conventions and standards of the native W5 database and web-server.  For the sake of practicality and because it contains sensitive information, neither the database nor the web.config folder have been included in the upload.
+  The SQL install provider can be found in the Providers/DataProviders/SqlDataProviders folder and is called 00.00.01.SqlDataProvider. This creates a basic table and filestructure for the database, which has since been manually updated and altered to reflect the conventions and standards of the native W5 database and web-server.  For the sake of practicality and because it contains sensitive information, neither the database nor the root website directory with the DNN install folders and web.config file have been included in this repository.
 
   In the Scripts folder there are five JS files which add functionality to the UI and presenatation layer, as well as some code for communicating with the business logic.  Buttons and CrumbButtons operate directly on the user interface, whereas ItemEdit, ItemView and QuickSettings allow for in-browser manipulation of the module.  The last three files include DNN specific funcitonality including admin priveleges and paneling in the DNN CMS.
 
