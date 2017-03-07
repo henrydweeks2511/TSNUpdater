@@ -1,0 +1,97 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE [object_id] = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ChooseUpdateType_Items]') AND type in (N'U'))
+	DROP TABLE {databaseOwner}[{objectQualifier}ChooseUpdateType_Items]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}ChooseUpdateType_Items
+(
+	[ItemId] INT NOT NULL IDENTITY (1, 1),
+	[ItemName] NVARCHAR(MAX) NOT NULL,
+	[ItemDescription] NVARCHAR(MAX) NOT NULL,
+	[AssignedUserId] INT NULL,
+	[ModuleId] INT NOT NULL,
+	[CreatedOnDate] DATETIME NOT NULL,
+	[CreatedByUserId] INT NOT NULL,
+	[LastModifiedOnDate] DATETIME NOT NULL,
+	[LastModifiedByUserId] INT NOT NULL
+)
+GO
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ChooseUpdateType_Items] ADD CONSTRAINT [PK_{objectQualifier}ChooseUpdateType_Items] PRIMARY KEY CLUSTERED ([ItemId])
+GO
+
+
+USE [w5]
+GO
+/****** Object:  StoredProcedure [dbo].[W5_TeeSheetNote_Get]    Script Date: 8/22/2016 10:37:31 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+-- =============================================
+-- Author:		Andy Weeks
+-- Create date: Nov 1, 2011
+-- Description:	It Returns TeeSheetNote 
+--				for the specified CourseID, TeeTimeDate and Channel.
+-- =============================================
+ALTER PROCEDURE [dbo].[W5_TeeSheetNote_Get]
+			@CourseID int,
+			@TeeTimeDate datetime,
+			@IsAgent tinyint,
+			@ChannelID int
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	
+	DECLARE @TeeSheetNote varchar(max)
+
+
+	SELECT @TeeSheetNote = COALESCE(@TeeSheetNote, '') + TeeSheetNote
+	FROM
+	(
+		SELECT DISTINCT TOP 1000 '<div class="TeeSheetNoteItem">' + tsn.TeeSheetNote + '</div>' AS TeeSheetNote, SortOrder
+		FROM TeeSheetNote tsn INNER JOIN
+			CourseTeeSheetNoteSchedule ctsns ON ctsns.TeeSheetNoteID=tsn.TeeSheetNoteID INNER JOIN
+			CourseTeeSheetNoteScheduleChannel ctsnsc ON ctsns.CourseTeeSheetNoteScheduleID=ctsnsc.CourseTeeSheetNoteScheduleID INNER JOIN
+			Course c ON ctsns.CourseID=c.CourseID INNER JOIN
+			FacilityTeeSheetNote ftsn ON c.FacilityID=ftsn.FacilityID AND tsn.TeeSheetNoteID=ftsn.TeeSheetNoteID
+		WHERE ctsns.CourseID=@CourseID
+			AND ctsns.StartDate <= @TeeTimeDate
+			AND ctsns.EndDate >= @TeeTimeDate
+			AND ctsnsc.ChannelID = @ChannelID
+			AND (DisplaySunday = CASE WHEN DatePart(weekday, @TeeTimeDate) = 1 THEN 1 ELSE 2 END OR DisplaySunday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 1 THEN 0 ELSE 2 END OR DisplaySunday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 1 THEN 1 ELSE 2 END)
+			AND (DisplayMonday = CASE WHEN DatePart(weekday, @TeeTimeDate) = 2 THEN 1 ELSE 2 END OR DisplayMonday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 2 THEN 0 ELSE 2 END OR DisplayMonday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 2 THEN 1 ELSE 2 END)
+			AND (DisplayTuesday = CASE WHEN DatePart(weekday, @TeeTimeDate) = 3 THEN 1 ELSE 2 END OR DisplayTuesday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 3 THEN 0 ELSE 2 END OR DisplayTuesday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 3 THEN 1 ELSE 2 END)
+			AND (DisplayWednesday = CASE WHEN DatePart(weekday, @TeeTimeDate) = 4 THEN 1 ELSE 2 END OR DisplayWednesday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 4 THEN 0 ELSE 2 END OR DisplayWednesday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 4 THEN 1 ELSE 2 END)
+			AND (DisplayThursday = CASE WHEN DatePart(weekday, @TeeTimeDate) = 5 THEN 1 ELSE 2 END OR DisplayThursday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 5 THEN 0 ELSE 2 END OR DisplayThursday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 5 THEN 1 ELSE 2 END)
+			AND (DisplayFriday = CASE WHEN DatePart(weekday, @TeeTimeDate) = 6 THEN 1 ELSE 2 END OR DisplayFriday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 6 THEN 0 ELSE 2 END OR DisplayFriday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 6 THEN 1 ELSE 2 END)
+			AND (DisplaySaturday = CASE WHEN DatePart(weekday, @TeeTimeDate) = 7 THEN 1 ELSE 2 END OR DisplaySaturday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 7 THEN 0 ELSE 2 END OR DisplaySaturday = CASE WHEN DatePart(weekday, @TeeTimeDate) <> 7 THEN 1 ELSE 2 END)
+			AND (DisplayAgent = CASE WHEN @IsAgent = 1 THEN 1 ELSE 2 END OR DisplayAgent = CASE WHEN @IsAgent = 0 THEN 0 ELSE 2 END OR DisplayAgent = CASE WHEN @IsAgent = 0 THEN 1 ELSE 2 END)
+			AND (DisplayNonAgent = CASE WHEN @IsAgent = 0 THEN 1 ELSE 2 END OR DisplayNonAgent = CASE WHEN @IsAgent = 1 THEN 0 ELSE 2 END OR DisplayNonAgent = CASE WHEN @IsAgent = 1 THEN 1 ELSE 2 END)
+			AND DisplayRegular = 1
+		ORDER BY ftsn.SortOrder
+	) AS sub
+	
+
+SELECT @TeeSheetNote
+
+End
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

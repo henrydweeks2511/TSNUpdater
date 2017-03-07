@@ -1,0 +1,194 @@
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.spaceHolder{
+    font-size: 20px;
+    font-weight:bolder;
+    color: #ff6a00;
+    background-color: #ffffff;
+    border: none;
+    padding: 15px 8px;
+    margin: 20px 8px;
+    cursor: pointer;
+    visibility:hidden;
+    overflow: hidden;
+    height: 38px;
+}
+
+#breadcrumbs{
+    width: 600px;
+}
+
+button.breadcrumbs {
+    font-size: 18px;
+    font-weight:bolder;
+    color: #ff6a00;
+    background-color: #ffffff;
+    border: none;
+    padding: 15px 8px;
+    margin: 20px 8px;
+    cursor: pointer;
+    display: none;
+    overflow: hidden;
+    height: 36px;
+}
+
+button.TSN_buttons{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #17900e;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 32px;
+    margin: 20px 12px;
+    cursor: pointer;
+}
+
+buttons.TSN_optionalbuttons{
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #ff6a00;
+    border: none;
+    padding: 8px 10px;
+    margin: 36px 8px;
+    cursor: pointer;
+}
+
+input.TSN_inputs{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    background-color: #b8f1f1;
+    color: #000000;
+    margin: 8px 12px;
+    cursor: pointer;
+}
+
+.TSN_optionalinputs{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    background-color: #b8f1f1;
+    color: #000000;
+    margin: 8px 12px;
+    padding: 14px 20px;
+    cursor: pointer;
+}
+
+span.TSN_Prompt{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #000000;
+    margin: 8px 12px;
+    padding: 14px 20px;
+}
+
+#CC{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #17900e;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 20px 12px;
+    cursor: pointer;
+}
+
+button.TSN_cUbuttons{
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #ff6a00;
+    border: none;
+    padding: 12px 14px;
+    margin: 36px 8px;
+    cursor: pointer;
+}
+
+
+#startUpdate{
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #ff6a00;
+    border: none;
+    padding: 12px 14px;
+    margin: 20px 8px;
+    cursor: pointer;
+}
+
+span.TSN_Prompt{
+    margin: 8px 10px;
+    font-size: 16px;
+    font-weight:bold;
+}
+
+h2.TSN_Prompt{
+    margin: 30px 8px;
+    font-weight:bold;
+}
+
+h2.TSN_HomePrompt{
+    margin: 20px 8px;
+    font-weight:bold;
+    color: #17900e;
+}
+
+h3.TSN_Prompt{
+    margin: 20px 8px;
+    font-weight:bold;
+    color: #17900e;
+}
+
+#cRDateTimeRemoveDay{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 32px;
+    margin: 20px 12px;
+    cursor: pointer;
+}
+
+.homePageInfo{
+    font-size: 16px;
+    margin: 30px 8px;
+    font-weight:bold;
+    color: #000000;
+}
+
+h2.TSN{
+    margin: 20px 8px;
+    font-weight:bold;
+}
+
+.TSN{
+    display:none;
+}
+#cRDateTimeMaster{
+    white-space:nowrap;
+}
+
+@media only screen and (max-device-width: 800px){
+    .TSN{
+        display:none;
+        width: 600px;
+    }
+}

@@ -1,0 +1,320 @@
+﻿[JavaScript:{ jsname: "JQuery" }]
+[JavaScript:{ jsname: "Knockout" }]
+[JavaScript:{ path: "~/Resources/Shared/scripts/dnn.jquery.js"}]
+[JavaScript:{ path: "~/DesktopModules/ChooseUpdateType/scripts/ItemView.js"}]
+[JavaScript:{ path: "~/DesktopModules/ChooseUpdateType/scripts/Buttons.js"}]
+[JavaScript:{ path: "~/DesktopModules/ChooseUpdateType/scripts/CrumbButtons.js"}]
+[CSS:{ path: "~/DesktopModules/ChooseUpdateType/TSN_module.css"}]
+
+[ModuleAction:{controlKey : "Edit", securityAccessLevel : "Edit",  titleKey: "EditModule", localResourceFile: "~/DesktopModules/ChooseUpdateType/App_LocalResources/View.resx" }]
+<head>
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+</head>
+
+<!--Breadcrumbs-->
+<div id="breadcrumb">
+    <button type="button" class="spaceHolder">...</button>
+    <!--Home Page Crumb-->
+    <button type="button" id="homeCrumb" class="breadcrumbs">Home</button>
+    <!--Choose update type breadcrumbs-->
+    <button type="button" id="updateTypecrumb" class="breadcrumbs">>  Choose Update Type</button>
+    <!--<button type="button" id="cRcrumb" class="breadcrumbs">>  Cart Rules</button>
+    <button type="button" id="eVcrumb" class="breadcrumbs">>  New Event</button>-->
+    <!--Course Conditions breadcrumbs-->
+    <button type="button" id="courseConditioncrumb" class="breadcrumbs">>  Course Conditions</button>
+    <button type="button" id="selectHolescrumb" class="breadcrumbs">>  Select Holes</button>
+    <button type="button" id="cCDateTimecrumb" class="breadcrumbs">>  Date and Time</button>
+    <!--Cart rules breadcrumbs-->
+    <button type="button" id="cRcrumb" class="breadcrumbs">>  Cart Rules</button>
+    <button type="button" id="cRAllHolescrumb" class="breadcrumbs">>  Select Holes</button>
+    <button type="button" id="cRDateTimecrumb" class="breadcrumbs">>  Date and Time</button>
+    <!--New event breadcrumbs-->
+    <button type="button" id="eVNamecrumb" class="breadcrumbs">>  Event Name</button>
+    <button type="button" id="eVTypecrumb" class="breadcrumbs">>  Event Booking/Instructions</button>
+    <button type="button" id="eVRestrictioncrumb" class="breadcrumbs">>  Event Restriction and Info</button>
+    <button type="button" id="eVDateTimecrumb" class="breadcrumbs">>  Date and Time</button>
+    <button type="button" class="spaceHolder">...</button>
+</div>
+
+
+<!--Home Page-->
+<div id="homePage">
+    <!--<script>
+        $(document).ready(function () {
+            $("#GetTeeSheetNote").load("W5_Logo.png");
+        });
+    </script>-->
+    <h2 class="TSN_HomePrompt">Example Golf Club</h2>
+    <button type="button" id="startUpdate">Post An Update!</button><br />
+    <div><button type="button" class="TSN_cUbuttons" id="CU">Request Support</button></div>
+    <h2 class="TSN_HomePrompt">Current Tee Sheet Notes</h2>
+    <div id="GetTeeSheetNote"></div>
+
+        <h3 class="TSN_Prompt">Cart Rules</h3>
+        <span class="homePageInfo">Current Cart Rule:</span>
+        <span class="homePageInfo">&nbsp;Cart Path Only</span>
+        <br />
+        <span class="homePageInfo">Applies:</span>
+        <span class="homePageInfo">&nbsp;All Day Today</span>
+        <br />
+        <br />
+        <h3 class="TSN_Prompt">Course Conditions</h3>
+        <span class="homePageInfo">Greens Condition:</span>
+        <span class="homePageInfo">&nbsp;Wet and Slow</span>
+        <br />
+        <span class="homePageInfo">Applies:</span>
+        <span class="homePageInfo">&nbsp;7/22/16 8:16 AM through 7/23/16 12:00 PM</span>
+        <br />
+        <br />
+        <span class="homePageInfo">Course Conditions:</span>
+        <span class="homePageInfo">&nbsp;No Conditions</span>
+        <br />
+        <h3 class="TSN_Prompt">Today's Events</h3>
+        <span class="homePageInfo">Name:</span>
+        <span class="homePageInfo">&nbsp;Men's League</span>
+        <br />
+        <span class="homePageInfo">Type:</span>
+        <span class="homePageInfo">&nbsp;Shotgun</span>
+        <br />
+        <span class="homePageInfo">Time:</span>
+        <span class="homePageInfo">&nbsp;3:08 PM through 6:56 PM</span>
+        <br />
+</div>
+
+<!--Choose Update Type Menu-->
+<div class="TSN" id="updateType">
+    <h2 class="TSN_Prompt">Please Choose a Type of Update.</h2>
+    <button type="button" class="TSN_buttons" id="CC">Course Condition</button>
+    <button type="button" class="TSN_buttons" id="CR">Cart Rule</button>
+    <button type="button" class="TSN_buttons" id="EV">New Event</button>
+</div>
+
+<!--Course Condition Menus-->
+<div id="courseConditions" class="TSN">
+    <h2 class="TSN_Prompt">Please Choose The Course Condition You Want To Post.</h2>
+    <button type="button" class="TSN_buttons" id="nCCondition">No Conditions</button>
+    <button type="button" class="TSN_buttons" id="sHCondition">Some Holes Closed</button>
+    <button type="button" class="TSN_buttons" id="fDCondition">Frost Delays</button>
+    <button type="button" class="TSN_buttons" id="cCCondition">Course Closed</button>
+    <button type="button" class="TSN_buttons" id="sGCondition">Some Greens Closed</button>
+    <button type="button" class="TSN_buttons" id="tGCondition">Temporary Greens</button>
+    <div>
+        <span>Create a new button for your list.</span>
+        <input type="text" id="cCcustomText" class="TSN_inputs"/>
+        <button type="button" class="TSN_cUbuttons" id="cCcustomButton">Add Condition</button>
+    </div>
+</div>
+<!--Course Condition Hole Selection-->
+<div class="TSN" id="selectHolesPrompt">
+<h2 class="TSN_Prompt">Which holes will this condition apply to?</h2>
+</div>
+<div id="selectHoles" class="TSN">
+    <span>To which holes will this update apply?&nbsp;&nbsp;&nbsp;</span><input type="text" id="cRSelectHolesText" />
+</div>
+<div id="selectHolesConfirm" class="TSN">
+    <button type="button" class="TSN_buttons" id="selectHolesConfirm">Next</button>
+</div>
+<!--Course Condition Date and Time Menus-->
+<div id="cCDatePrompt" class="TSN">
+    <h2 class="TSN_Prompt">Please give this event a date and timeframe.</h2>
+    <button type="button" class="TSN_buttons" id="cCDateTimeConfirm">Next</button>
+    <input type="checkbox" checked="checked" class="TSN_inputs" id="cCDateTimeAllDay">All Day Today<br />
+</div>
+<div id="cCDateTime" class="TSN">
+    <span class="TSN_Prompt">Date</span>
+    <input type="date" class="TSN_inputs" id="eVDate" />
+</div>
+
+<div class="TSN" id="cCDateTimeCustom">
+    <span class="TSN_Prompt">Date</span>
+    <input type="date" class="TSN_inputs" id="cCDateCustom" />
+    <span class="TSN_Prompt" id="cCTimeBeginTimePrompt">Begin</span>
+    <input class="TSN_inputs" type="time" id="cCTimeBeginField" />
+    <span class="TSN_Prompt" id="cCTimeEndTimePrompt">End&nbsp;&nbsp;&nbsp;</span>
+    <input class="TSN_inputs" type="time" id="cCTimeEndField" /><br />
+</div>
+
+<div class="TSN" id="cCDateTimeAddedDays"></div>
+<div class="TSN" id="cCDateTimeBottom">
+    <button type="button" class="TSN_buttons" id="cCDateTimeAddDay">Add Day</button>
+</div>
+
+
+<!--Cart Rules Menus-->
+<div id="cartRules" class="TSN">
+    <h2 class="TSN_Prompt">Please choose a cart rule to post.</h2>
+
+    <button type="button" id="nR" class="TSN_buttons">No Restrictions</button>
+    <button type="button" id="ninety" class="TSN_buttons">90 Degree Rule</button>
+    <button type="button" id="cPO" class="TSN_buttons">Cart Path Only</button>
+    <button type="button" id="nC" class="TSN_buttons">No Carts</button>
+    <div>
+        <span>Create a new button for you list.</span>
+        <input type="text" id="cRcustomText" class="TSN_inputs" />
+        <button type="button" class="TSN_cUbuttons" id="cRcustomButton">Add Cart Rule</button>
+    </div>
+</div>
+<!--Cart Rules Hole Selection-->
+<div class="TSN" id="cRAllHoles">
+    <h2 class="TSN_Prompt">Does this update apply to all courses and holes?</h2>
+    <button type="button" class="TSN_buttons" id="cRAllHolesYes">Yes</button>
+    <button type="button" class="TSN_buttons" id="cRAllHolesNo">No</button>
+</div>
+<div class="TSN" id="cRSelectHolesPrompt">
+    <h2 class="TSN_Prompt">Which holes will this condition apply to?</h2>
+</div>
+<div id="cRSelectHoles" class="TSN">
+    <span>To which holes will this update apply?&nbsp;&nbsp;&nbsp;</span><input type="text" id="cRSelectHolesText" />
+</div>
+<div id="cRSelectHolesConfirm" class="TSN">
+    <button type="button" class="TSN_buttons" id="cRselectHolesConfirm">Next</button>
+</div>
+
+<!--Cart Rules Date and Time-->
+
+<div id="cRDatePrompt" class="TSN">
+    <h2 class="TSN_Prompt">Please give this cart rule a date and timeframe.</h2>
+</div>
+<div id="cRDateTimeMaster">
+    <span id="cRDateTime" class="TSN">
+        <input type="checkbox" checked="checked" class="TSN_inputs" id="cRDateTimeAllDay"><span>All Day</span><br />
+        <span class="TSN_Prompt">Date</span>
+        <input type="date" class="TSN_inputs" id="cRDate" />
+    </span>
+    <span id="cRDateTimeCustom" class="TSN">
+        <span class="TSN_Prompt" id="cRTimeBeginTimePrompt">Begin</span>
+        <input class="TSN_inputs" type="time" id="cRTimeBeginField" />
+        <span class="TSN_Prompt" id="cRTimeEndTimePrompt">End&nbsp;&nbsp;&nbsp;</span>
+        <input class="TSN_inputs" type="time" id="cRTimeEndField" /><br />
+    </span>
+</div>
+<!--
+<div class="TSN" id="cRDateTimeCopy0">
+    <span class="TSN_Prompt">Date</span>
+    <input type="date" class="TSN_inputs" id="cCDateCustom" />
+    <span class="TSN_Prompt" id="cCTimeBeginTimePrompt">Begin</span>
+    <input class="TSN_inputs" type="time" id="cCTimeBeginField" />
+    <span class="TSN_Prompt" id="cCTimeEndTimePrompt">End&nbsp;&nbsp;&nbsp;</span>
+    <input class="TSN_inputs" type="time" id="cCTimeEndField" /><br />
+</div>
+-->
+<div class="TSN" id="cRDateTimeAddedDays">
+    <div id="cRDateTimeCopy0">
+        <span class="TSN_Prompt">Day 2</span><br />
+        <span class="TSN_Prompt">Date</span>
+        <input type="date" class="TSN_inputs" id="cCDateCustom" />
+        <span class="TSN_Prompt" id="cCTimeBeginTimePrompt">Begin</span>
+        <input class="TSN_inputs" type="time" id="cCTimeBeginField" />
+        <span class="TSN_Prompt" id="cCTimeEndTimePrompt">End&nbsp;&nbsp;&nbsp;</span>
+        <input class="TSN_inputs" type="time" id="cCTimeEndField" /><br />
+    </div>
+</div>
+<div class="TSN" id="cRDateTimeBottom">
+    <button type="button" class="TSN_buttons" id="cRDateTimeAddDay">Add Day</button>
+    <button type="button" class="TSN_buttons" id="cRDateTimeRemoveDay">Remove Day</button>
+</div>
+<div class="TSN" id="cRDateTimeConfirmDiv">
+    <button type="button" class="TSN_buttons" id="cRDateTimeConfirm">Next</button>
+</div>
+
+
+<!--New Event Creation Menus-->
+<div id="eVPrompt" class="TSN">
+    <h2 class="TSN_Prompt" id="eVPrompt">Please Give Some Details About Your Event.</h2>
+</div>
+<div id="eVName" style="display:none">
+    <p>
+        Please give this event a name.&nbsp;&nbsp;
+        <input class="TSN_inputs" type="text" id="newEventnameText" />
+        <button type="button" class="TSN_buttons" id="eVNameButton">Next</button>
+    </p>
+</div>
+<div id="eVTypeButtons" class="TSN">
+    <h2 class="TSN_Prompt">Please Give Instructions For Booking this Event</h2>
+    <button type="button" id="eV0" class="TSN_buttons">Transfer calls about this event to the golf shop.</button>
+    <button type="button" id="eV1" class="TSN_buttons">Book these times under the designated channel.</button>
+    <button type="button" id="eV2" class="TSN_buttons">These times must be booked in person in the golf shop.</button>
+    <div>
+        <span>Create a custom set of instructions for you list.</span>
+        <input type="text" id="eVcustomText" class="TSN_inputs" />
+        <button type="button" class="TSN_cUbuttons" id="eVcustomButton">Use Custom Instructions</button>
+    </div>
+</div>
+<!--Event Restrictions Menu-->
+<div id="eVRestrictionsButtons" class="TSN">
+    <h2 class="TSN_Prompt">What kind of event is this?  Are there any restrictions?</h2>
+    <div>
+        <input type="text" id="eVtypeText" class="TSN_inputs" />
+        <button type="button" class="TSN_cUbuttons" id="eVRestrictionButton">Continue</button>
+    </div>
+</div>
+<!--Event Date and Time Menus-->
+    <div id="eVDatePrompt" class="TSN">
+        <h2 class="TSN_Prompt">Please give this event a date and timeframe.</h2>
+        <button type="button" class="TSN_buttons" id="eVDateTimeConfirm">Next</button>
+        <input type="checkbox" checked="checked" class="TSN_inputs" id="eVDateTimeAllDay">All Day Today<br />
+    </div>
+    <div id="eVDateTime" class="TSN">
+        <span class="TSN_Prompt">Date</span>
+        <input type="date" class="TSN_inputs" id="eVDate" />
+    </div>
+
+    <div class="TSN" id="eVDateTimeCustom">
+        <span class="TSN_Prompt">Date</span>
+        <input type="date" class="TSN_inputs" id="eVDateCustom" />
+        <span class="TSN_Prompt" id="eVTimeBeginTimePrompt">Begin</span>
+        <input class="TSN_inputs" type="time" id="eVTimeBeginField" />
+        <span class="TSN_Prompt" id="eVTimeEndTimePrompt">End&nbsp;&nbsp;&nbsp;</span>
+        <input class="TSN_inputs" type="time" id="eVTimeEndField" /><br />
+    </div>
+
+    <div class="TSN" id="eVDateTimeAddedDays"></div>
+    <div class="TSN" id="eVDateTimeBottom">
+        <button type="button" class="TSN_buttons" id="eVDateTimeAddDay">Add Day</button>
+    </div>
+
+<!--Confirm Update Menu-->
+    <div id="confirmUpdate" class="TSN" style="display:none">
+        <h2 class="TSN_Prompt">Please confirm your update</h2>
+        <p>Add any additional information aout this update that you would like our agents to see.</p>
+        <input type="text" id="confirmUpdateText"/><br />
+        <button id="finalConfirm" class="TSN_cUbuttons">Confirm Update</button>
+    </div>
+
+<!--Account Manager Request Support Menus-->
+    <div class="TSN" id="requestSupport">
+        <h2 class="TSN_Prompts">Request support from your account manager.</h2>
+        <p class="TSN_SubPrompts">How would you like to be contacted?</p>
+        <input type="checkbox" class="TSN_optionalinputs" id="rSPhone" /><span class="TSN_Prompt">By Phone</span><br /><br/>
+        <input type="checkbox" class="TSN_optionalinputs" id="rSEmail" /><span class="TSN_Prompt">By Email</span><br /><br />
+        <input type="checkbox" class="TSN_optionalinputs" id="requestSupportMessageCheckBox" />Send a custom message.<br /><br />
+        <input type="text" class="TSN_textboxes" id="reqestSupportMessage"/><br /><br />
+        <button class="TSN_cUbuttons" id="requestSuppoerConfirm">Send Request</button>
+    </div>
+<br />
+<br />
+<br />
+<br />
+<!--Decorative Elements-->
+<!--<div class="TSN" id="officeImage">
+    <p>Post an update to our team of reservation agents so that they can stay up to date on the important information.</p>
+    <img src="office-stock.jpg" style="opacity:.5"/>
+</div>-->
+
+    <script language="javascript" type="text/javascript">
+        jQuery(function ($) {
+            var moduleId = parseInt("[ModuleContext:ModuleId]");
+
+            var localizedSettings = {};
+
+            var viewmodel = new ChooseUpdateType.itemListViewModel(moduleId, localizedSettings);
+            viewmodel.init();
+
+            ko.applyBindings(viewmodel, $("#Items-" + moduleId)[0]);
+
+        });
+    </script>
+    </>

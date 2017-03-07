@@ -1,0 +1,22 @@
+﻿<h3>ChooseUpdateType</h3>
+<p class="Contributor">
+	Henry Weeks <br />
+	<a href="mailto:henry.weeks@w5golf.com">henry.weeks@w5golf.com</a><br />
+	<a href=www.w5golf.com>www.w5golf.com</a><br />
+</p>
+<hr/>
+<div class="License">
+	<h3>About the ChooseUpdateType</h3>
+	<p class="Owner">
+		<b>Version 0.0.2</b><br /><br />
+	</p>
+	<p>Includes partial builds of the choose update type menu, course conditions, cart rules, and new events creation menus.  <br/>
+	Next to come will be partial builds of the confirm menu, choose facility menu, and conditional display scripts.
+	</p>
+	
+	<h4>Bug Fixes</h4>
+	<ul>
+			The whole thing is a bug.
+	</ul>
+	
+</div>

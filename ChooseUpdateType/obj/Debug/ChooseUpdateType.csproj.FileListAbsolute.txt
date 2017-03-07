@@ -1,0 +1,5 @@
+C:\DotNetNuke\Website_TSNUpdater\bin\ChooseUpdateType.dll
+C:\DotNetNuke\Website_TSNUpdater\bin\ChooseUpdateType.pdb
+C:\DotNetNuke\Website_TSNUpdater\DesktopModules\ChooseUpdateType\obj\Debug\ChooseUpdateType.csprojResolveAssemblyReference.cache
+C:\DotNetNuke\Website_TSNUpdater\DesktopModules\ChooseUpdateType\obj\Debug\ChooseUpdateType.dll
+C:\DotNetNuke\Website_TSNUpdater\DesktopModules\ChooseUpdateType\obj\Debug\ChooseUpdateType.pdb
